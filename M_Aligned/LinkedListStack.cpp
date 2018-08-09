@@ -33,18 +33,18 @@ class Stack
 void Stack::push(int v)
 {
     Node* n = new Node(v);
-    n->next = m_Top;
+    n->prev = m_Top;
     m_Top = n;
 }
 
 
-int* Stack::pop()
+int Stack::pop()
 {
     if (m_Top)
     {
         int value = m_Top->value;
-        Node n = m_Top;
-        m_Top = m_Top->next;
+        Node* n = m_Top;
+        m_Top = m_Top->prev;
         delete n;
         return value;
     }
